@@ -63,6 +63,7 @@ $(document).ready(function($) {
 			$('#slip_shipState').val('CA');
 			$('#slip_shipZip').val('91355');
 		} else {
+			$('#slip_shipName').val(' ');
 			$('#slip_shipAddress').val(' ');
 			$('#slip_shipCity').val(' ');
 			$('#slip_shipState').val(' ');
