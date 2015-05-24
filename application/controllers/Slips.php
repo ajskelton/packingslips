@@ -56,6 +56,8 @@ class Slips extends CI_Controller {
 		$this->form_validation->set_rules('slip_shipZip', 'Ship Zip', 'required');
 		$this->form_validation->set_rules('slip_fedexTracking', 'FedEx Tracking Number');
 		$this->form_validation->set_rules('slip_rmaNumber', 'RMA Number');
+		$this->form_validation->set_rules('slip_customerContact', 'Customer Contact', 'required');
+		$this->form_validation->set_rules('slip_customerPhone', 'Customer Phone', 'required');
 		$this->form_validation->set_rules('slip_comments', 'Comments');
 
 		if ($this->form_validation->run() === FALSE)
@@ -96,7 +98,7 @@ class Slips extends CI_Controller {
 		$this->form_validation->set_rules('slip_shipZip', 'Ship Zip', 'required');
 		$this->form_validation->set_rules('slip_fedexTracking', 'FedEx Tracking Number');
 		$this->form_validation->set_rules('slip_rmaNumber', 'RMA Number');
-		$this->form_validation->set_rules('slip_customerName', 'Customer Name', 'required');
+		$this->form_validation->set_rules('slip_customerContact', 'Customer Contact', 'required');
 		$this->form_validation->set_rules('slip_customerPhone', 'Customer Phone #', 'required');
 		$this->form_validation->set_rules('slip_comments', 'Comments');
 		$this->form_validation->set_rules('slip_status', 'Status');
@@ -111,8 +113,6 @@ class Slips extends CI_Controller {
 		{
 			$this->PackingSlips_model->set_slip($id);
 
-			$this->load->library('session');
-
 			$this->session->set_flashdata('msg', '<div class="alert alert-success" role="alert">Packing Slip Updated</div>');
 			redirect('slips/');
 			return TRUE;
@@ -123,8 +123,6 @@ class Slips extends CI_Controller {
 	public function delete()
 	{
 		$this->PackingSlips_model->delete_slip();
-
-		$this->load->library('session');
 
 		$this->session->set_flashdata('msg', '<div class="alert alert-warning" role="alert">Packing Slip Deleted</div>');
 		redirect('slips');

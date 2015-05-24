@@ -1,3 +1,4 @@
+<?php $this->session->set_userdata('referred_from', current_url()); ?>
 <div id="kcra-address" class="print-only">
 	<div class="printRow">
 		<p>
