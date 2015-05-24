@@ -57,15 +57,15 @@
 				<tbody>
 					<tr>
 						<td style="font-weight:bold;width:200px;">RMA Number</td>
-						<td><?php $slips_item["slip_rmaNumber"] ?></td>
+						<td><?php echo $slips_item["slip_rmaNumber"]?></td>
 					</tr>
 					<tr>
 						<td style="font-weight: bold">Customer Contact</td>
-						<td></td>
+						<td><?php echo $slips_item['slip_customerContact']?></td>
 					</tr>
 					<tr>
 						<td style="font-weight: bold">Customer Phone: </td>
-						<td></td>
+						<td><?php echo $slips_item['slip_customerPhone']?></td>
 					</tr>
 				</tbody>
 			</table>
@@ -122,16 +122,13 @@
 <div class="jumbotron no-print">
 	<h2>Packing slip for <?php echo $slips_item["slip_deviceName"]?></h2>
 	<h3>Slip Status <span class="label label-primary"><?php echo $slips_item["slip_status"]?></span></h3>
-	<h3>Creation Date <span class="label label-primary"><?php echo date( 'F j, Y g:i a', strtotime($slips_item['slip_date'])) ?></span></h3>
+	<h3>Creation Date : <strong><?php echo date( 'F j, Y g:i a', strtotime($slips_item['slip_date'])) ?></strong></h3>
 	<hr>
 	<a href="javascript:window.print()">
 		<button class="btn btn-lg btn-success" id="print-button" />Print Packing Slip</button>
 	</a>
-<!-- 	<a href="<?php echo site_url('slips/edit')?>">
-		<button class="btn btn-lg btn-warning">Edit Packing Slip</button>
-	</a> -->
 	<?php echo anchor('slips/edit/' . $slips_item['slip_id'], 'Edit Packing Slip', 'class="btn btn-lg btn-warning"'); ?>
-	<?php echo anchor('slips/delete/' . $slips_item['slip_id'], 'Delete Slip', 'class="btn btn-lg btn-danger"'); ?>
+	<?php echo anchor('slips/delete/' . $slips_item['slip_id'], 'Delete Slip', array('onclick' => "return confirm('Are you sure you want to delete this Packing Slip?')", 'class' => 'btn btn-lg btn-danger')) ?>
 
 </div>
 <div class="no-print">
@@ -172,10 +169,14 @@
 		<tr>
 			<th>FedEx Tracking Number</th>
 			<th>RMA Number</th>
+			<th>Customer Contact</th>
+			<th>Customer Phone</th>
 		</tr>
 		<tr>
 			<td><?php echo $slips_item["slip_fedexTracking"]?></td>
 			<td><?php echo $slips_item["slip_rmaNumber"]?></td>
+			<td><?php echo $slips_item["slip_customerContact"]?></td>
+			<td><?php echo $slips_item["slip_customerPhone"]?></td>
 		</tr>
 	</table>
 	<h3>Comments</h3>

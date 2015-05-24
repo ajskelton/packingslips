@@ -10,8 +10,8 @@ class Slips extends CI_Controller {
 	public function index()
 	{
 		$this->load->library('session');
+		$data = array();
 		$data['slips'] = $this->PackingSlips_model->get_slips();
-		// $data['success'] = false;
 		$data['title'] = 'Packing Slip Archive';
 
 		$this->load->view('templates/header', $data);
@@ -19,71 +19,22 @@ class Slips extends CI_Controller {
 		$this->load->view('templates/footer');
 	}
 
-	public function view($id = NULL)
+	public function view()
 	{
-		$this->load->helper('form');
+		$id = $this->uri->segment(2);
 		$data['slips_item'] = $this->PackingSlips_model->get_slips($id);
 
-		if (empty($data['slips_item']))
+		if (empty($id))
 		{
 			show_404();
 		}
 
 		$data['title'] = 'Packing Slip: #'.$data['slips_item']['slip_id'];
+		$data['slips_item'] = $this->PackingSlips_model->get_slips($id);
 
 		$this->load->view('templates/header', $data);
 		$this->load->view('slips/view', $data);
 		$this->load->view('templates/footer');
-	}
-
-	public function edit($id = NULL)
-	{
-		$this->load->helper('form');
-		$this->load->library('form_validation');
-
-		$data['slips_item'] = $this->PackingSlips_model->get_slips($id);
-		// $data['slips_item'] = $this->PackingSlips_model->get_slips($id);
-
-		if (empty($data['slips_item']))
-		{
-			show_404();
-		}
-
-		$this->form_validation->set_rules('slip_assetTag', 'Asset Tag', 'required');
-		$this->form_validation->set_rules('slip_manufacturer', 'Manufacturer', 'required');
-		$this->form_validation->set_rules('slip_deviceName', 'Device Name', 'required');
-		$this->form_validation->set_rules('slip_modelNumber', 'Model Number');
-		$this->form_validation->set_rules('slip_quantity', 'Quantity', 'required');
-		$this->form_validation->set_rules('slip_shipAddress', 'Ship Address', 'required');
-		$this->form_validation->set_rules('slip_shipCity', 'Ship City', 'required');
-		$this->form_validation->set_rules('slip_shipState', 'Ship State', 'required');
-		$this->form_validation->set_rules('slip_shipZip', 'Ship Zip', 'required');
-		$this->form_validation->set_rules('slip_fedexTracking', 'FedEx Tracking Number');
-		$this->form_validation->set_rules('slip_rmaNumber', 'RMA Number');
-		$this->form_validation->set_rules('slip_comments', 'Comments');
-
-		$data['title'] = 'Update Packing Slip';
-
-		if ($this->form_validation->run() === FALSE)
-		{
-			$this->load->view('templates/header', $data);
-			$this->load->view('slips/edit', $data);
-			$this->load->view('templates/footer');
-		}
-		else
-		{
-			$this->PackingSlips_model->update_slip();
-
-			// $this->load->library('session');
-
-			// $this->session->set_flashdata('msg', '<div class="alert alert-success" role="alert">Packing Slip Updated</div>');
-			// redirect('slips');
-			// $this->load->view('slips');
-			redirect('slips');
-			
-			return TRUE;
-		}
-
 	}
 
 	public function create()
@@ -98,6 +49,7 @@ class Slips extends CI_Controller {
 		$this->form_validation->set_rules('slip_deviceName', 'Device Name', 'required');
 		$this->form_validation->set_rules('slip_modelNumber', 'Model Number');
 		$this->form_validation->set_rules('slip_quantity', 'Quantity', 'required');
+		$this->form_validation->set_rules('slip_shipName', 'Ship Name', 'required');
 		$this->form_validation->set_rules('slip_shipAddress', 'Ship Address', 'required');
 		$this->form_validation->set_rules('slip_shipCity', 'Ship City', 'required');
 		$this->form_validation->set_rules('slip_shipState', 'Ship State', 'required');
@@ -119,100 +71,63 @@ class Slips extends CI_Controller {
 			$this->load->library('session');
 
 			$this->session->set_flashdata('msg', '<div class="alert alert-success" role="alert">Packing Slip Created</div>');
-			redirect('slips/index');
+			redirect('slips');
 			return TRUE;
 
 		}
 	}
 
-	// public function update() {
-	// 	$this->load->helper('form');
-	// 	$this->load->library('form_validation');
+	public function edit()
+	{
+		$id = $this->uri->segment(3);
+		$this->load->library('form_validation');
+		$data['slips_item'] = $this->PackingSlips_model->get_slips($id);
+		$data['title'] = 'Edit Packing Slip # '.$data['slips_item']['slip_id'];
 
-	// 	$data['title'] = 'Updating Packing Slip';
+		$this->form_validation->set_rules('slip_assetTag', 'Asset Tag', 'required');
+		$this->form_validation->set_rules('slip_manufacturer', 'Manufacturer', 'required');
+		$this->form_validation->set_rules('slip_deviceName', 'Device Name', 'required');
+		$this->form_validation->set_rules('slip_modelNumber', 'Model Number');
+		$this->form_validation->set_rules('slip_quantity', 'Quantity', 'required');
+		$this->form_validation->set_rules('slip_shipName', 'Ship Name', 'required');
+		$this->form_validation->set_rules('slip_shipAddress', 'Ship Address', 'required');
+		$this->form_validation->set_rules('slip_shipCity', 'Ship City', 'required');
+		$this->form_validation->set_rules('slip_shipState', 'Ship State', 'required');
+		$this->form_validation->set_rules('slip_shipZip', 'Ship Zip', 'required');
+		$this->form_validation->set_rules('slip_fedexTracking', 'FedEx Tracking Number');
+		$this->form_validation->set_rules('slip_rmaNumber', 'RMA Number');
+		$this->form_validation->set_rules('slip_customerName', 'Customer Name', 'required');
+		$this->form_validation->set_rules('slip_customerPhone', 'Customer Phone #', 'required');
+		$this->form_validation->set_rules('slip_comments', 'Comments');
+		$this->form_validation->set_rules('slip_status', 'Status');
 
-	// 	$this->form_validation->set_rules('slip_assetTag', 'Asset Tag', 'required');
-	// 	$this->form_validation->set_rules('slip_manufacturer', 'Manufacturer', 'required');
-	// 	$this->form_validation->set_rules('slip_deviceName', 'Device Name', 'required');
-	// 	$this->form_validation->set_rules('slip_modelNumber', 'Model Number');
-	// 	$this->form_validation->set_rules('slip_quantity', 'Quantity', 'required');
-	// 	$this->form_validation->set_rules('slip_shipAddress', 'Ship Address', 'required');
-	// 	$this->form_validation->set_rules('slip_shipCity', 'Ship City', 'required');
-	// 	$this->form_validation->set_rules('slip_shipState', 'Ship State', 'required');
-	// 	$this->form_validation->set_rules('slip_shipZip', 'Ship Zip', 'required');
-	// 	$this->form_validation->set_rules('slip_fedexTracking', 'FedEx Tracking Number');
-	// 	$this->form_validation->set_rules('slip_rmaNumber', 'RMA Number');
-	// 	$this->form_validation->set_rules('slip_comments', 'Comments');
-	// 	$this->form_validation->set_rules('slip_status', 'Status');
+		if($this->form_validation->run() === FALSE)
+		{
+			$this->load->view('templates/header', $data);
+			$this->load->view('slips/edit', $data);
+			$this->load->view('templates/footer');
+		}
+		else
+		{
+			$this->PackingSlips_model->set_slip($id);
 
-	// 	if($this->form_validation->run() === FALSE)
-	// 	{
-	// 		$this->load->view('templates/header', $data);
-	// 		$this->load->view('slips/edit', $data);
-	// 		$this->load->view('templates/footer');
-	// 	}
-	// 	else
-	// 	{
-	// 		$this->PackingSlips_model->update_slip();
+			$this->load->library('session');
 
-	// 		$this->load->library('session');
+			$this->session->set_flashdata('msg', '<div class="alert alert-success" role="alert">Packing Slip Updated</div>');
+			redirect('slips/');
+			return TRUE;
+		}
 
-	// 		$this->session->set_flashdata('msg', '<div class="alert alert-success" role="alert">Packing Slip Updated');
-	// 		redirect('slips');
-	// 		return TRUE;
-	// 	}
-	// }
-	
-	// public function modify($id = null) {
-	// 	if ($id == null)
-	// 	{
-	// 		show_error('No identifier provided', 500);
-	// 	}
-	// 	else
-	// 	{
-	// 		$data['title'] = "Update Packing Slip";
-	// 		$data['view_name'] = 'slips/edit';
-	// 		$data['view_data'] = $this->slips->get($slip_id);
-
-	// 		$this->load->view('edit', $data);
-	// 	}
-	// }
-
+	}
 
 	public function delete()
 	{
 		$this->PackingSlips_model->delete_slip();
+
+		$this->load->library('session');
+
+		$this->session->set_flashdata('msg', '<div class="alert alert-warning" role="alert">Packing Slip Deleted</div>');
 		redirect('slips');
+		return TRUE;
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

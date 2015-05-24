@@ -51,20 +51,20 @@ $(document).ready(function($) {
 		$('#slip_serialNumber').val(assetData['Serial Number']);
 	}
 
-	$('select').change(function() {
+	$('.select-address').change(function() {
 		var $val = $('select option:selected');
 		if($val.val() == 'viz' ) {
 			console.log('viz preset');
-			$('#slip_shipAddress').val('Viz Street Address');
-			$('#slip_shipCity').val('Viz City');
-			$('#slip_shipState').val('Viz State');
-			$('#slip_shipZip').val('Viz Zip');
+			$('#slip_shipAddress').val('101 Billerica Ave Bldg 6');
+			$('#slip_shipCity').val('North Billerica');
+			$('#slip_shipState').val('MA');
+			$('#slip_shipZip').val('01862');
 		} else if ($val.val() == 'troll') {
 			console.log('troll preset');
-			$('#slip_shipAddress').val('Troll Street Address');
-			$('#slip_shipCity').val('Troll City');
-			$('#slip_shipState').val('Troll State');
-			$('#slip_shipZip').val('Troll Zip');
+			$('#slip_shipAddress').val('24950 Anza Drive');
+			$('#slip_shipCity').val('Valencia');
+			$('#slip_shipState').val('CA');
+			$('#slip_shipZip').val('91355');
 		} else {
 			console.log('no preset');
 			$('#slip_shipAddress').val(' ');

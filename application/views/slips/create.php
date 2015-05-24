@@ -65,11 +65,17 @@ echo form_open('slips/create', $attributes);
 			<div class='form-group'>
 				<label for='presets' class='col-sm-3 control-label'>Presets</label>
 				<div class='col-sm-9'>
-					<select class='form-control' id='presets'>
+					<select class='select-address form-control' id='presets'>
 						<option value='none' selected='selected'>None</option>
-						<option value='viz'>Viz</option>
+						<option value='viz'>Vizlink</option>
 						<option value='troll'>Troll</option>
 					</select>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label for='slip_shipName' class='col-sm-3 control-label'>Address</label>
+				<div class='col-sm-9'>
+					<input name='slip_shipName' type='input' class='form-control' id='slip_shipName' placeholder='' value="<?php echo set_value('slip_shipName', ''); ?>">
 				</div>
 			</div>
 			<div class='form-group'>
@@ -99,8 +105,8 @@ echo form_open('slips/create', $attributes);
 		</div>
 	</div>
 	<div class='row'>
+		<h2 class='center'>Other Information</h2>
 		<div class='col-md-6'>
-			<h2 class='center'>Other Information</h2>
 			<div class='form-group'>
 				<label for='device-name' class='col-sm-3 control-label'>FedEx Tracking Number</label>
 				<div class='col-sm-9'>
@@ -114,9 +120,40 @@ echo form_open('slips/create', $attributes);
 				</div>
 			</div>
 			<div class='form-group'>
-				<label for='device-name' class='col-sm-3 control-label'>Additional Comments</label>
+				<label for='slip_comments' class='col-sm-3 control-label'>Additional Comments</label>
 				<div class='col-sm-9'>
 					<textarea name='slip_comments' type='textarea' class='form-control' id='slip_comments' rows='3' placeholder=''><?php echo set_value('slip_comments', ''); ?></textarea>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class='form-group'>
+				<label for='slip_customerPhone' class='col-sm-3 control-label'>Customer Phone #</label>
+				<div class='col-sm-9'>
+					<input name='slip_customerPhone' type='input' class='form-control' id='slip_customerPhone' placeholder='' value="<?php echo set_value('slip_customerPhone', ''); ?>">
+				</div>
+			</div>
+			<div class='form-group'>
+				<label for='slip_customerContact' class='col-sm-3 control-label'>Customer Contact</label>
+				<div class='col-sm-9'>
+					<input name='slip_customerContact' type='input' class='form-control' id='slip_customerContact' placeholder='' value="<?php echo set_value('slip_customerContact', ''); ?>">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="status" class="col-sm-3 control-label">Status</label>
+				<div class="col-sm-9">
+					<?php 
+					$status_options = array(
+						'Created' => 'Created',
+						'Shipped' => 'Shipped',
+						'Arrived' => 'Arrived',
+						'Being Returned' => 'Being Returned',
+						'Complete' => 'Completed'
+					);
+					$status_classes = 'class="form-control"';
+					// $selected = set_select('slip_status');
+					echo form_dropdown('slip_status', $status_options, set_value('slip_status'), $status_classes);
+					?>
 				</div>
 			</div>
 		</div>
