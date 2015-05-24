@@ -15,9 +15,7 @@ $(document).ready(function($) {
 			url: wikiUrl,
 			dataType: "jsonp",
 			success: function( response ) {
-				console.log("Mediawiki connection successful");
 				var page = response.parse;
-				console.log(response);
 				var title = page.displaytitle;
 				var text = page.text["*"];
 
@@ -28,7 +26,6 @@ $(document).ready(function($) {
 					var value = $(this).find('td').text().trim();
 					assetData[key] = value;
 				});
-				// createForm();
 				insertData(assetData);
 				clearTimeout(wikiRequestTimeout);
 			}
@@ -54,19 +51,18 @@ $(document).ready(function($) {
 	$('.select-address').change(function() {
 		var $val = $('select option:selected');
 		if($val.val() == 'viz' ) {
-			console.log('viz preset');
+			$('#slip_shipName').val('Vizlink');
 			$('#slip_shipAddress').val('101 Billerica Ave Bldg 6');
 			$('#slip_shipCity').val('North Billerica');
 			$('#slip_shipState').val('MA');
 			$('#slip_shipZip').val('01862');
 		} else if ($val.val() == 'troll') {
-			console.log('troll preset');
+			$('#slip_shipName').val('Troll');
 			$('#slip_shipAddress').val('24950 Anza Drive');
 			$('#slip_shipCity').val('Valencia');
 			$('#slip_shipState').val('CA');
 			$('#slip_shipZip').val('91355');
 		} else {
-			console.log('no preset');
 			$('#slip_shipAddress').val(' ');
 			$('#slip_shipCity').val(' ');
 			$('#slip_shipState').val(' ');
