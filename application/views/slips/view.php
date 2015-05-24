@@ -1,4 +1,9 @@
-<?php $this->session->set_userdata('referred_from', current_url()); ?>
+<?php 
+$this->session->set_userdata('referred_from', current_url());
+if($this->session->flashdata('msg') != '' ):
+	echo $this->session->flashdata('msg');
+endif; 
+?>
 <div id="kcra-address" class="print-only">
 	<div class="printRow">
 		<p>

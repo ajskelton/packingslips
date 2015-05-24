@@ -113,8 +113,9 @@ class Slips extends CI_Controller {
 		{
 			$this->PackingSlips_model->set_slip($id);
 
-			$this->session->set_flashdata('msg', '<div class="alert alert-success" role="alert">Packing Slip Updated</div>');
-			redirect('slips/');
+			$this->session->set_flashdata('msg', '<div class="alert alert-success no-print" role="alert">Packing Slip Updated</div>');
+			$referred_from = $this->session->userdata('referred_from');
+			redirect($referred_from, 'refresh');
 			return TRUE;
 		}
 
