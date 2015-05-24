@@ -19,7 +19,7 @@
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="#">KCRA | <?php echo $title ?></a>
+			<a class="navbar-brand" href="<?php echo site_url('slips'); ?>">KCRA | <?php echo $title ?></a>
 		</div>
 
 		<!-- Collect the nav links, forms, and other content for toggling -->
