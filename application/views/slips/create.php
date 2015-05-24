@@ -73,7 +73,7 @@ echo form_open('slips/create', $attributes);
 				</div>
 			</div>
 			<div class='form-group'>
-				<label for='slip_shipName' class='col-sm-3 control-label'>Address</label>
+				<label for='slip_shipName' class='col-sm-3 control-label'>Name</label>
 				<div class='col-sm-9'>
 					<input name='slip_shipName' type='input' class='form-control' id='slip_shipName' placeholder='' value="<?php echo set_value('slip_shipName', ''); ?>">
 				</div>
