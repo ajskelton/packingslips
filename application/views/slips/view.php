@@ -39,6 +39,10 @@ endif;
 				<tbody>
 					<tr>
 						<td style="width:120px">Ship To: </td>
+						<td><?php echo $slips_item["slip_shipName"] ?></td>
+					</tr>
+					<tr>
+						<td></td>
 						<td><?php echo $slips_item["slip_shipAddress"] ?></td>
 					</tr>
 					<tr>
