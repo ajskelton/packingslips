@@ -69,6 +69,7 @@ echo form_open('slips/create', $attributes);
 						<option value='none' selected='selected'>None</option>
 						<option value='viz'>Vizlink</option>
 						<option value='troll'>Troll</option>
+						<option value="sony-la">Sony LA</option>
 					</select>
 				</div>
 			</div>
