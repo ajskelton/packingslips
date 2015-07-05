@@ -13,7 +13,8 @@ endif;
 		<th>Asset Tag</th>
 		<th>Device Name</th>
 		<th>Manufacturer</th>
-		<th>Date Packing Slip Created</th>
+		<th>Date Created</th>
+		<th>Last Modified</th>
 		<th>Status</th>
 	</tr>
 <?php 
@@ -26,6 +27,7 @@ foreach ($reverseSlips as $slips_item):
                             "</a></td><td>" . $slips_item['slip_deviceName'] . 
                             "</td><td>" . $slips_item['slip_manufacturer'] .
                             "</td><td>" . date( 'F j, Y g:i a', strtotime($slips_item['slip_date'])) . 
+                            "</td><td>" . $slips_item['slip_lastModified'] .
                             "</td><td>" . $slips_item['slip_status'] . 
                             "</td><tr>"; 
  
@@ -39,7 +41,8 @@ endforeach ?>
 		<th>Asset Tag</th>
 		<th>Device Name</th>
 		<th>Manufacturer</th>
-		<th>Date Packing Slip Created</th>
+		<th>Date Created</th>
+		<th>Last Modified</th>
 		<th>Status</th>
 	</tr>
 	<?php
@@ -50,6 +53,7 @@ endforeach ?>
                             "</a></td><td>" . $slips_item['slip_deviceName'] . 
                             "</td><td>" . $slips_item['slip_manufacturer'] .
                             "</td><td>" . date( 'F j, Y g:i a', strtotime($slips_item['slip_date'])) . 
+                            "</td><td>" . $slips_item['slip_lastModified'] .                            
                             "</td><td>" . $slips_item['slip_status'] . 
                             "</td><tr>"; 
       endforeach ?>
