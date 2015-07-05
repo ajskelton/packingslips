@@ -21,7 +21,13 @@
 			</button>
 			<a class="navbar-brand" href="<?php echo site_url('slips'); ?>">KCRA | <?php echo $title ?></a>
 		</div>
-
+		<div class="col-sm-3 col-sm-offset-4">
+	            <div id="imaginary_container"> 
+	                <div class="input-group stylish-input-group">
+	                  
+	                </div>
+	            </div>
+        	</div>		
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-right">

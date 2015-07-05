@@ -133,6 +133,7 @@ endif;
 	<h2>Packing slip for <?php echo $slips_item["slip_deviceName"]?></h2>
 	<h3>Slip Status <span class="label label-primary"><?php echo $slips_item["slip_status"]?></span></h3>
 	<h3>Creation Date : <strong><?php echo date( 'F j, Y g:i a', strtotime($slips_item['slip_date'])) ?></strong></h3>
+	<h3>Last Modified : <strong><?php echo $slips_item["slip_lastModified"]?></strong></h3>
 	<hr>
 	<a href="javascript:window.print()">
 		<button class="btn btn-lg btn-success" id="print-button" />Print Packing Slip</button>

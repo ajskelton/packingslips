@@ -62,6 +62,12 @@ $(document).ready(function($) {
 			$('#slip_shipCity').val('Valencia');
 			$('#slip_shipState').val('CA');
 			$('#slip_shipZip').val('91355');
+		} else if ($val.val() == 'sony-la') {
+			$('#slip_shipName').val('Sony Electronics Inc');
+			$('#slip_shipAddress').val('2706 Media Center Avenu');
+			$('#slip_shipCity').val('Los Angeles');
+			$('#slip_shipState').val('CA');
+			$('#slip_shipZip').val('90065');
 		} else {
 			$('#slip_shipName').val(' ');
 			$('#slip_shipAddress').val(' ');

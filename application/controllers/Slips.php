@@ -10,6 +10,7 @@ class Slips extends CI_Controller {
 	public function index()
 	{
 		$this->load->library('session');
+		$this->load->helper('form');
 		$data = array();
 		$data['slips'] = $this->PackingSlips_model->get_slips();
 		$data['title'] = 'Packing Slip Archive';
@@ -59,6 +60,7 @@ class Slips extends CI_Controller {
 		$this->form_validation->set_rules('slip_customerContact', 'Customer Contact', 'required');
 		$this->form_validation->set_rules('slip_customerPhone', 'Customer Phone', 'required');
 		$this->form_validation->set_rules('slip_comments', 'Comments');
+		
 
 		if ($this->form_validation->run() === FALSE)
 		{
@@ -128,5 +130,13 @@ class Slips extends CI_Controller {
 		$this->session->set_flashdata('msg', '<div class="alert alert-warning" role="alert">Packing Slip Deleted</div>');
 		redirect('slips');
 		return TRUE;
+	}
+
+	public function search()
+	{
+		$this->load->helper('form');
+		$keyword = $this->input->post('keyword');
+		$data['results'] = $this->PackingSlips_model->search($keyword);
+		$this->load->view('results_view', $data);
 	}
 }

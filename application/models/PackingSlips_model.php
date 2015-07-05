@@ -6,6 +6,11 @@ class PackingSlips_model extends CI_Model {
 		$this->load->database();
 	}
 
+	public function record_count()
+	{
+		return $this->db->count_all("slip_id");
+	}
+
 	public function get_slips($id = 0)
 	{
 		if ($id === 0)
@@ -21,6 +26,7 @@ class PackingSlips_model extends CI_Model {
 	public function set_slip($id = 0)
 	{
 		$this->load->helper('url');
+		$this->load->helper('date');
 
 		$data = array(
 			'slip_assetTag' => $this->input->post('slip_assetTag'),
@@ -41,7 +47,9 @@ class PackingSlips_model extends CI_Model {
 			'slip_id' => $this->input->post('slip_id'),
 			'slip_customerContact' => $this->input->post('slip_customerContact'),
 			'slip_customerPhone' => $this->input->post('slip_customerPhone'),
+			'slip_lastModified' => date('F j, Y g:i a')
 		);
+	
 
 		if ($id === 0 )
 		{
@@ -59,5 +67,15 @@ class PackingSlips_model extends CI_Model {
 	{
 		$this->db->where('slip_id', $this->uri->segment(3));
 		$this->db->delete('slips');
+	}
+
+	public function search($keyword)
+	{
+		$this->db->select('*');
+		$this->db->from('slips');
+		$this->db->like('slip_deviceName', $keyword);
+
+		$query = $this->db->get();
+		return $query->result();
 	}
 }

@@ -57,6 +57,7 @@ echo form_open('slips/edit', $attributes, $hidden);
 						<option value='none' selected='selected'>None</option>
 						<option value='viz'>Vizlink</option>
 						<option value='troll'>Troll</option>
+						<option value="sony-la">Sony LA</option>
 					</select>
 				</div>
 			</div>
