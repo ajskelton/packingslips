@@ -44,6 +44,7 @@ class Slips extends CI_Controller {
 		$this->load->library('form_validation');
 
 		$data['title'] = 'Create a Packing Slip';
+		$data['vendors'] = $this->PackingSlips_model->get_the_vendors();
 
 		$this->form_validation->set_rules('slip_assetTag', 'Asset Tag', 'required');
 		$this->form_validation->set_rules('slip_manufacturer', 'Manufacturer', 'required');

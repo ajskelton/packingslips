@@ -33,6 +33,7 @@
 			<ul class="nav navbar-nav navbar-right">
 			<li><a href="<?php echo site_url('slips/create'); ?>">New Slip <span class="sr-only">(current)</span></a></li>
 			<li><a href="<?php echo site_url('slips'); ?>">Archive</a></li>
+			<li><a href="<?php echo site_url('vendors'); ?>">Vendors</a></li>
 			</ul>
 		</div><!-- /.navbar-collapse -->
 	</div><!-- /.container-fluid -->

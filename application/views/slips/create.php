@@ -1,5 +1,4 @@
 <?php echo validation_errors('<div class="alert alert-danger" role="alert">', '</div>'); ?>
-
 <?php 
 $attributes = array('class' => 'form-horizontal', 'id' => 'packing-slip-form');
 echo form_open('slips/create', $attributes); 
@@ -65,11 +64,15 @@ echo form_open('slips/create', $attributes);
 			<div class='form-group'>
 				<label for='presets' class='col-sm-3 control-label'>Presets</label>
 				<div class='col-sm-9'>
-					<select class='select-address form-control' id='presets'>
+					<select class='select-address form-control' id='select-address'> <!-- This select pulls the names of vendors from the db and uses them as options. On selecting an option the address fields are filled in via javascript at the end of this file -->
 						<option value='none' selected='selected'>None</option>
-						<option value='viz'>Vizlink</option>
-						<option value='troll'>Troll</option>
-						<option value="sony-la">Sony LA</option>
+						<?php
+							$i = 0;
+							foreach($vendors as $vendor) {
+								echo "<option value='$i'>".$vendor['vendor_name']."</option>";
+								$i = $i + 1;
+							}
+						?>
 					</select>
 				</div>
 			</div>
@@ -152,7 +155,6 @@ echo form_open('slips/create', $attributes);
 						'Complete' => 'Completed'
 					);
 					$status_classes = 'class="form-control"';
-					// $selected = set_select('slip_status');
 					echo form_dropdown('slip_status', $status_options, set_value('slip_status'), $status_classes);
 					?>
 				</div>
@@ -162,3 +164,42 @@ echo form_open('slips/create', $attributes);
 	<input id="form-btn" type='submit' name="submit" class='btn btn-primary btn-lg btn-block' value="Create New Packing Slip">
 </form>
 <div id="returned"></div>
+
+<script>
+	var vendors = <?php echo json_encode($vendors) ?>; // Convert the vendors variable from php to javascript
+
+	window.onload = function() {
+        if(window.addEventListener) {
+            document.getElementById('select-address').addEventListener('change', loadAddress, false);
+        } else if (window.attachEvent){
+            document.getElementById('select-address').attachEvent("onchange", loadXMLDoc);
+        }
+
+        function loadAddress(){ // When select change detected, use the vendors variable to fill in the address fields
+        	var select = document.getElementById('select-address');
+        	var val = select.options[select.selectedIndex].value;
+
+        	var name = document.getElementById('slip_shipName');
+        	var address = document.getElementById('slip_shipAddress');
+        	var city = document.getElementById('slip_shipCity');
+        	var state = document.getElementById('slip_shipState');
+        	var zip = document.getElementById('slip_shipZip');
+
+        	if(val == 'none'){ // Check if None preset selected
+        		name.value = '';
+        		address.value = '';
+        		city.value = '';
+        		state.value = '';
+        		zip.value = '';
+
+        		return;
+        	}
+
+          name.value = vendors[val]['vendor_name'];
+          address.value = vendors[val]['vendor_address'];					
+          city.value = vendors[val]['vendor_city'];
+          state.value = vendors[val]['vendor_state'];
+          zip.value = vendors[val]['vendor_zip'];
+        }
+    }
+</script>

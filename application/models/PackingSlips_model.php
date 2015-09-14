@@ -23,6 +23,12 @@ class PackingSlips_model extends CI_Model {
 		return $query->row_array();
 	}
 
+	public function get_the_vendors()
+	{
+		$query = $this->db->get('vendors');
+		return $query->result_array();
+	}
+
 	public function set_slip($id = 0)
 	{
 		$this->load->helper('url');

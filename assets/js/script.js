@@ -48,35 +48,6 @@ $(document).ready(function($) {
 		$('#slip_serialNumber').val(assetData['Serial Number']);
 	}
 
-	$('.select-address').change(function() {
-		var $val = $('select option:selected');
-		if($val.val() == 'viz' ) {
-			$('#slip_shipName').val('Vizlink');
-			$('#slip_shipAddress').val('101 Billerica Ave Bldg 6');
-			$('#slip_shipCity').val('North Billerica');
-			$('#slip_shipState').val('MA');
-			$('#slip_shipZip').val('01862');
-		} else if ($val.val() == 'troll') {
-			$('#slip_shipName').val('Troll');
-			$('#slip_shipAddress').val('24950 Anza Drive');
-			$('#slip_shipCity').val('Valencia');
-			$('#slip_shipState').val('CA');
-			$('#slip_shipZip').val('91355');
-		} else if ($val.val() == 'sony-la') {
-			$('#slip_shipName').val('Sony Electronics Inc');
-			$('#slip_shipAddress').val('2706 Media Center Avenu');
-			$('#slip_shipCity').val('Los Angeles');
-			$('#slip_shipState').val('CA');
-			$('#slip_shipZip').val('90065');
-		} else {
-			$('#slip_shipName').val(' ');
-			$('#slip_shipAddress').val(' ');
-			$('#slip_shipCity').val(' ');
-			$('#slip_shipState').val(' ');
-			$('#slip_shipZip').val(' ');
-		}
-	});
-
 	function resetTextFields() {
 		$("#manufacturer").val(' ');
 		$("#device-name").val(' ');
