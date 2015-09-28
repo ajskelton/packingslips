@@ -17,25 +17,16 @@ class PackingSlips_model extends CI_Model {
 		{
 			$this->db->select('*');
 			$this->db->from('slips');
-			// $this->db->join('items', 'items.slip_id_fk = slips.slip_id');
 			$query = $this->db->get();
-			if($query->num_rows() < 1){
-				return FALSE;
-			}
 
 			return $query->result_array();
 		}
+
 		$this->db->select('*');
 		$this->db->from('slips');
 		$this->db->join('items', 'items.slip_id_fk = slips.slip_id');
 		$this->db->where('slips.slip_id', $id);
-
 		$query = $this->db->get();
-
-
-		// if($query->num_rows() < 1){
-		// 	return FALSE;
-		// }
 
 		return $query->result();
 	}
