@@ -137,8 +137,8 @@ echo form_open('slips/create', $attributes);
 	</div>
 		</div>
 
-<div class='row'>
-	<h2 class='center'>Device <span class="h5" id="add_device">Add Device</span></h2>
+<div class='row' id='device'>
+	<h2 class='center'>Device</h2>
 		<div class='col-md-6'>
 			<div class='form-group'>
 				<label for='item_assetTag' class='col-sm-3 control-label'>Asset Tag Number</label>
@@ -179,11 +179,18 @@ echo form_open('slips/create', $attributes);
 				</div>
 			</div>
 		</div>
-
-
-<div class="row">
-	<input id="form-btn" type='submit' name="submit" class='btn btn-primary btn-lg btn-block' value="Create New Packing Slip">
 	</div>
+
+<div class="row" id="add-device">
+	<div class="col-sm-12">
+		<div class="btn btn-warning btn-lg btn-block">Add Device</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-sm-12">
+		<input id="form-btn" type='submit' name="submit" class='btn btn-primary btn-lg btn-block' value="Create New Packing Slip">
+	</div>	
+</div>
 </form>
 <div id="returned"></div>
 
@@ -223,5 +230,5 @@ echo form_open('slips/create', $attributes);
           state.value = vendors[val]['vendor_state'];
           zip.value = vendors[val]['vendor_zip'];
         }
-    }
+    }    
 </script>
