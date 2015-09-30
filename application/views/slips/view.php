@@ -4,6 +4,9 @@ if($this->session->flashdata('msg') != '' ):
 	echo $this->session->flashdata('msg');
 endif; 
 ?>
+<!-- <pre>
+	<?php var_dump($slips_item); ?>
+</pre> -->
 
 <div id="kcra-address" class="print-only">
 	<div class="printRow">
