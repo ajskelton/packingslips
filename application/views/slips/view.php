@@ -140,7 +140,7 @@ endif;
 
 
 <div class="jumbotron no-print">
-	<h2>Packing slip for <?php echo $slips_item[0]->item_deviceName; ?></h2>
+	<h2>Packing slip for <?php echo $slips_item[0]->slip_description; ?></h2>
 	<h3>Slip Status <span class="label label-primary"><?php echo $slips_item[0]->slip_status?></span></h3>
 	<h3>Creation Date : <strong><?php echo date( 'F j, Y g:i a', strtotime($slips_item[0]->slip_date)) ?></strong></h3>
 	<h3>Last Modified : <strong><?php echo $slips_item[0]->slip_lastModified; ?></strong></h3>
