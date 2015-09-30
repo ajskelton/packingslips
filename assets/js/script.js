@@ -70,6 +70,59 @@ $(document).ready(function($) {
 		location.reload();
 	});
 
+	counter = 1;
+  $('#add-device').click(function(e){
+  	e.preventDefault;
+  	console.log('clicked');
+		$('#add-device').before(
+			"<hr>\
+			<div class='row' id='device_"+(counter+1)+"'>\
+			<h2 class='center' id='device_1'>Device "+(counter+1)+"</h2>\
+				<div class='col-md-6'>\
+					<div class='form-group'>\
+						<label for='item_assetTag' class='col-sm-3 control-label'>Asset Tag Number</label>\
+						<div class='col-sm-9'>\
+							<input name='item_assetTag["+counter+"]'' type='input' class='form-control' id='item_assetTag' placeholder='' value=''>\
+						</div>\
+					</div>\
+					<div class='form-group'>\
+						<label for='item_manufacturer' class='col-sm-3 control-label'>Manufacturer</label>\
+						<div class='col-sm-9'>\
+							<input name='item_manufacturer["+counter+"]' type='input' class='form-control' id='item_manufacturer' placeholder='' value=''>\
+						</div>\
+					</div>\
+					<div class='form-group'>\
+						<label for='item_deviceName' class='col-sm-3 control-label'>Device Name</label>\
+						<div class='col-sm-9'>\
+							<input name='item_deviceName["+counter+"]' type='input' class='form-control' id='item_deviceName' placeholder='' value=''>\
+						</div>\
+					</div>\
+				</div>\
+				<div class='col-md-6'>\
+					<div class='form-group'>\
+						<label for='item_modelNumber' class='col-sm-3 control-label'>Model Number</label>\
+						<div class='col-sm-9'>\
+							<input name='item_modelNumber["+counter+"]' type='input' class='form-control' id='item_modelNumber' placeholder='' value=''>\
+						</div>\
+					</div>\
+					<div class='form-group'>\
+						<label for='item_serialNumber' class='col-sm-3 control-label'>Serial Number</label>\
+						<div class='col-sm-9'>\
+							<input name='item_serialNumber["+counter+"]' type='input' class='form-control' id='item_serialNumber' placeholder='' value=''>\
+						</div>\
+					</div>\
+					<div class='form-group'>\
+						<label for='item_quantity' class='col-sm-3 control-label'>Quantity</label>\
+						<div class='col-sm-9'>\
+							<input name='item_quantity["+counter+"]' type='input' class='form-control' id='item_quantity' placeholder='' value=''>\
+						</div>\
+					</div>\
+				</div>\
+			</div>"
+		);
+		// console.log('button clicked');
+		counter++;
+  });
 });
 
 
