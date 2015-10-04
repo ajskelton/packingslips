@@ -166,12 +166,14 @@ endif;
 	<h3>Shipping Information</h3>
 	<table id="shipping-table" class="table">
 		<tr>
+			<th>To</th>
 			<th>Address</th>
 			<th>City</th>
 			<th>State</th>
 			<th>Zip</th>
 		</tr>
 		<tr>
+			<td><?php echo $slips_item[0]->slip_shipName; ?></td>
 			<td><?php echo $slips_item[0]->slip_shipAddress; ?></td>
 			<td><?php echo $slips_item[0]->slip_shipCity; ?></td>
 			<td><?php echo $slips_item[0]->slip_shipState; ?></td>
