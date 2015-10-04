@@ -51,7 +51,7 @@ endforeach ?>
 		echo "<tr><td><a href='slips/" . $slips_item['slip_id'] . "'>" . $slips_item['slip_id'] .
                             "</a></td><td><a href='slips/" . $slips_item['slip_id'] . "'>" . $slips_item['slip_description'] . 
                             "</a></td><td>" . $slips_item['slip_shipName'] . 
-                            "</td><td>" . $slips_item['slip_fedexTracking'] .
+                            "</td><td><a target='_blank' href='https://www.fedex.com/apps/fedextrack/?action=track&language=english&cntry_code=us&tracknumbers=" . $slips_item['slip_fedexTracking'] . "'>" . $slips_item['slip_fedexTracking'] .
                             "</td><td>" . date( 'F j, Y g:i a', strtotime($slips_item['slip_date'])) . 
                             "</td><td>" . $slips_item['slip_lastModified'] .
                             "</td><td>" . $slips_item['slip_status'] . 
