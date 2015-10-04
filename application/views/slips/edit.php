@@ -201,3 +201,42 @@ foreach ($slips_item as $item) {
 </form>
 
 <div id="returned"></div>
+
+<script>
+	var vendors = <?php echo json_encode($vendors) ?>; // Convert the vendors variable from php to javascript
+
+	window.onload = function() {
+        if(window.addEventListener) {
+            document.getElementById('select-address').addEventListener('change', loadAddress, false);
+        } else if (window.attachEvent){
+            document.getElementById('select-address').attachEvent("onchange", loadXMLDoc);
+        }
+
+        function loadAddress(){ // When select change detected, use the vendors variable to fill in the address fields
+        	var select = document.getElementById('select-address');
+        	var val = select.options[select.selectedIndex].value;
+
+        	var name = document.getElementById('slip_shipName');
+        	var address = document.getElementById('slip_shipAddress');
+        	var city = document.getElementById('slip_shipCity');
+        	var state = document.getElementById('slip_shipState');
+        	var zip = document.getElementById('slip_shipZip');
+
+        	if(val == 'none'){ // Check if None preset selected
+        		name.value = '';
+        		address.value = '';
+        		city.value = '';
+        		state.value = '';
+        		zip.value = '';
+
+        		return;
+        	}
+
+          name.value = vendors[val]['vendor_name'];
+          address.value = vendors[val]['vendor_address'];					
+          city.value = vendors[val]['vendor_city'];
+          state.value = vendors[val]['vendor_state'];
+          zip.value = vendors[val]['vendor_zip'];
+        }
+    }    
+</script>
