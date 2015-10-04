@@ -5,6 +5,7 @@ if($this->session->flashdata('msg') != '' ):
 	echo $this->session->flashdata('msg');
 endif; 
 ?>
+
 <h2>Active Packing Slips</h2>
 <table class="table table-striped">
 	<tr>
@@ -19,7 +20,7 @@ endif;
 <?php 
 $reverseSlips = array_reverse($slips);
 foreach ($reverseSlips as $slips_item): 
-	if ($slips_item['slip_status'] != 'Complete')
+	if ($slips_item['slip_status'] != 'Complete'){
 		$url = $slips_item['slip_fedexTracking'];
 
 	echo "<tr><td><a href='slips/" . $slips_item['slip_id'] . "'>" . $slips_item['slip_id'] .
@@ -30,7 +31,7 @@ foreach ($reverseSlips as $slips_item):
                             "</td><td>" . $slips_item['slip_lastModified'] .
                             "</td><td>" . $slips_item['slip_status'] . 
                             "</td><tr>"; 
- 
+ }
 endforeach ?>
 
 </table>
