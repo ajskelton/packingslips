@@ -4,3 +4,24 @@
 .print-only {
 	display:none;
 }
+footer {
+	background-color:#101010;
+	margin-top:120px;
+}
+.text-muted {
+	margin: 1em 0;
+}
+h2 {
+	padding-bottom:9px;
+	margin:20px 16px 20px 0;
+	border-bottom: 1px solid #ddd;
+}
+#asset-id-form {
+	margin-top:60px;
+}
+
+#sticky.stick {
+	position:fixed;
+	top:0;
+	z-index:10000;
+}

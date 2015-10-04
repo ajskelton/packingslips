@@ -1,7 +1,9 @@
 $(document).ready(function($) {
 	var assetData = {};
+	var deviceNumber = 0;
 
 	function loadData() {
+		console.log('loading-data');
 		var $body = $('body');
 		var $returned = $('#returned');
 		var asset = $('#wiki-asset').val();
@@ -26,6 +28,7 @@ $(document).ready(function($) {
 					var value = $(this).find('td').text().trim();
 					assetData[key] = value;
 				});
+				console.log(assetData);
 				insertData(assetData);
 				clearTimeout(wikiRequestTimeout);
 			}
@@ -37,15 +40,17 @@ $(document).ready(function($) {
 		e.preventDefault();
 		loadData();
 		var asset = $('#wiki-asset').val();
-		$('#asset-id-form').hide();
-		$('#slip_assetTag').val(asset);
+		deviceNumber = $('#deviceNumber').find(":selected").val();
+		console.log(deviceNumber);
+		$('#item_assetTag_'+deviceNumber).val(asset);
+		$('#wiki-asset').val('927-######');
 	});
 
 	function insertData(assetData) {
-		$('#slip_manufacturer').val(assetData['Manufacturer']);
-		$('#slip_deviceName').val(assetData['Device Name']);
-		$('#slip_modelNumber').val(assetData['Model Number']);
-		$('#slip_serialNumber').val(assetData['Serial Number']);
+		$('#item_manufacturer_'+deviceNumber).val(assetData['Manufacturer']);
+		$('#item_deviceName_'+deviceNumber).val(assetData['Device Name']);
+		$('#item_modelNumber_'+deviceNumber).val(assetData['Model Number']);
+		$('#item_serialNumber_'+deviceNumber).val(assetData['Serial Number']);
 	}
 
 	function resetTextFields() {
@@ -74,27 +79,27 @@ $(document).ready(function($) {
   $('#add-device').click(function(e){
   	e.preventDefault;
   	console.log('clicked');
-		$('#add-device').before(
-			"<hr>\
-			<div class='row' id='device_"+(counter+1)+"'>\
-			<h2 class='center' id='device_1'>Device "+(counter+1)+"</h2>\
+  	counter = $('.device').length;
+		$('#form').append(
+			"<div class='row device' id='device_"+(counter+1)+"'>\
+			<h2 id='device_1'>Device "+(counter+1)+"</h2>\
 				<div class='col-md-6'>\
 					<div class='form-group'>\
 						<label for='item_assetTag' class='col-sm-3 control-label'>Asset Tag Number</label>\
 						<div class='col-sm-9'>\
-							<input name='item_assetTag["+counter+"]'' type='input' class='form-control' id='item_assetTag' placeholder='' value=''>\
+							<input name='item_assetTag["+counter+"]'' type='input' class='form-control' id='item_assetTag_"+counter+"' placeholder='' value=''>\
 						</div>\
 					</div>\
 					<div class='form-group'>\
 						<label for='item_manufacturer' class='col-sm-3 control-label'>Manufacturer</label>\
 						<div class='col-sm-9'>\
-							<input name='item_manufacturer["+counter+"]' type='input' class='form-control' id='item_manufacturer' placeholder='' value=''>\
+							<input name='item_manufacturer["+counter+"]' type='input' class='form-control' id='item_manufacturer_"+counter+"' placeholder='' value=''>\
 						</div>\
 					</div>\
 					<div class='form-group'>\
 						<label for='item_deviceName' class='col-sm-3 control-label'>Device Name</label>\
 						<div class='col-sm-9'>\
-							<input name='item_deviceName["+counter+"]' type='input' class='form-control' id='item_deviceName' placeholder='' value=''>\
+							<input name='item_deviceName["+counter+"]' type='input' class='form-control' id='item_deviceName_"+counter+"' placeholder='' value=''>\
 						</div>\
 					</div>\
 				</div>\
@@ -102,13 +107,13 @@ $(document).ready(function($) {
 					<div class='form-group'>\
 						<label for='item_modelNumber' class='col-sm-3 control-label'>Model Number</label>\
 						<div class='col-sm-9'>\
-							<input name='item_modelNumber["+counter+"]' type='input' class='form-control' id='item_modelNumber' placeholder='' value=''>\
+							<input name='item_modelNumber["+counter+"]' type='input' class='form-control' id='item_modelNumber_"+counter+"' placeholder='' value=''>\
 						</div>\
 					</div>\
 					<div class='form-group'>\
 						<label for='item_serialNumber' class='col-sm-3 control-label'>Serial Number</label>\
 						<div class='col-sm-9'>\
-							<input name='item_serialNumber["+counter+"]' type='input' class='form-control' id='item_serialNumber' placeholder='' value=''>\
+							<input name='item_serialNumber["+counter+"]' type='input' class='form-control' id='item_serialNumber_"+counter+"' placeholder='' value=''>\
 						</div>\
 					</div>\
 					<div class='form-group'>\
@@ -120,7 +125,8 @@ $(document).ready(function($) {
 				</div>\
 			</div>"
 		);
-		// console.log('button clicked');
+		$('#deviceNumber').append('<option value="'+counter+'">Device '+(counter+1)+'</option>');
+		console.log('button clicked');
 		counter++;
   });
 });

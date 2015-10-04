@@ -4,9 +4,6 @@ if($this->session->flashdata('msg') != '' ):
 	echo $this->session->flashdata('msg');
 endif; 
 ?>
-<!-- <pre>
-	<?php var_dump($slips_item); ?>
-</pre> -->
 
 <div id="kcra-address" class="print-only">
 	<div class="printRow">
@@ -115,20 +112,6 @@ endif;
 					<td></td>
 					<td></td>
 				</tr>
-				<tr>
-					<td style="height:37px"> </td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
-				<tr>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
 			</tbody>
 		</table>
 	</div><!-- end device-table -->
@@ -148,8 +131,8 @@ endif;
 	<a href="javascript:window.print()">
 		<button class="btn btn-lg btn-success" id="print-button" />Print Packing Slip</button>
 	</a>
-	<?php echo anchor('slips/edit/' . $slips_item['slip_id'], 'Edit Packing Slip', 'class="btn btn-lg btn-warning"'); ?>
-	<?php echo anchor('slips/delete/' . $slips_item['slip_id'], 'Delete Slip', array('onclick' => "return confirm('Are you sure you want to delete this Packing Slip?')", 'class' => 'btn btn-lg btn-danger')) ?>
+	<?php echo anchor('slips/edit/' . $slips_item[0]->slip_id, 'Edit Packing Slip', 'class="btn btn-lg btn-warning"'); ?>
+	<?php echo anchor('slips/delete/' . $slips_item[0]->slip_id, 'Delete Slip', array('onclick' => "return confirm('Are you sure you want to delete this Packing Slip?')", 'class' => 'btn btn-lg btn-danger')) ?>
 
 </div>
 <div class="no-print">

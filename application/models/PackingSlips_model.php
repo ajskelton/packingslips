@@ -90,18 +90,36 @@ class PackingSlips_model extends CI_Model {
 		}
 		else
 		{
-			$this->db->where('slip_id', $data['slip_id']);
+			$slip_data['slip_id'] = $this->input->post('slip_id');
+			$this->db->where('slip_id', $slip_data['slip_id']);
 			$this->db->update('slips', $slip_data);
-			$this->db->update('items', $item_data);
+
+			$item_data['item_id'] = $this->input->post('item_id');
+			// var_dump($item_data);
+
+			for( $i = 0; $i < count($item_data['item_assetTag']); $i++ ) {
+				$insert = array(
+					'item_id' => $item_data['item_id'][$i],
+					'item_assetTag' => $item_data['item_assetTag'][$i],
+					'item_manufacturer' => $item_data['item_manufacturer'][$i],
+					'item_deviceName' => $item_data['item_deviceName'][$i],
+					'item_modelNumber' => $item_data['item_modelNumber'][$i],
+					'item_serialNumber' => $item_data['item_serialNumber'][$i],
+					'item_quantity' => $item_data['item_quantity'][$i],
+					'slip_id_fk' => $slip_data['slip_id']
+				);
+				$this->db->where('item_id', $insert['item_id']);
+				$this->db->replace('items', $insert);
+			}
 		}
 
 	}
 
-	// public function delete_slip()
-	// {
-	// 	$this->db->where('slip_id', $this->uri->segment(3));
-	// 	$this->db->delete('slips');
-	// }
+	public function delete_slip()
+	{
+		$this->db->where('slip_id', $this->uri->segment(3));
+		$this->db->delete('slips');
+	}
 
 	// public function search($keyword)
 	// {

@@ -8,7 +8,7 @@ echo form_open('vendors/create', $attributes, $hidden);
 <div class="row">
 	<div class="col-md-6 col-md-offset-3">
 		<h2>Create a New Vendor preset</h2>
-<p>Use this form to add the address for a vendor. You can then select this vendor from the new slip form under the presets dropdown.</p>
+<p>Use this form to add the address for a vendor. You can then select this vendor on the new slip form under the presets dropdown.</p>
 		<div class="form-group">
 			<label for="vendor_name" type="input" class="col-sm-3 control-label">Vendor Name</label>
 			<div class="col-sm-9">
