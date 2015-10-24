@@ -31,8 +31,9 @@
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-right">
-			<li><a href="<?php echo site_url('slips/create'); ?>">New Slip <span class="sr-only">(current)</span></a></li>
-			<li><a href="<?php echo site_url('slips'); ?>">Archive</a></li>
+			<li><a href="<?php echo site_url('slips/create'); ?>">New Slip</a></li>
+			<li><a href="<?php echo site_url('slips'); ?>">Active Slips</a></li>
+			<li><a href="<?php echo site_url('slips/archive'); ?>">Archive</a></li>
 			<li><a href="<?php echo site_url('vendors'); ?>">Vendors</a></li>
 			</ul>
 		</div><!-- /.navbar-collapse -->
