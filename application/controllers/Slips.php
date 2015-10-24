@@ -13,7 +13,7 @@ class Slips extends CI_Controller {
 		$this->load->helper('form');
 		$data = array();
 		$data['slips'] = $this->PackingSlips_model->get_slips();
-		$data['title'] = 'Packing Slip Archive';
+		$data['title'] = 'Active Packing Slips';
 
 		$this->load->view('templates/header', $data);
 		$this->load->view('slips/index.php', $data);
@@ -30,7 +30,7 @@ class Slips extends CI_Controller {
 			show_404();
 		}
 
-		$data['title'] = 'Packing Slip: '.$data['slips_item']['slip_description'];
+		$data['title'] = 'Packing Slip: '.$data['slips_item'][0]->slip_description;
 
 		$this->load->view('templates/header', $data);
 		$this->load->view('slips/view', $data);
@@ -84,6 +84,7 @@ class Slips extends CI_Controller {
 
 		$data['slips_item'] = $this->PackingSlips_model->get_slips($id);
 		$data['vendors'] = $this->PackingSlips_model->get_the_vendors();
+		$data['title'] = 'Edit Packing Slip: '.$data['slips_item'][0]->slip_description;
 
 		if($post = $this->input->post()){
 			
