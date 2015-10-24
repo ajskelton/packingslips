@@ -4,8 +4,6 @@
 $attributes = array('class' => 'form-horizontal', 'id' => 'packing-slip-form');
 $hidden = array('slip_id' => $slips_item[0]->slip_id);
 echo form_open('slips/edit/' . $slips_item[0]->slip_id, $attributes, $hidden); 
-// echo $data['slips_item']['slip_assetTag'];
-
 ?>
 	<div class="col-md-12" id="form">
 	<div class="row">
@@ -130,7 +128,7 @@ echo form_open('slips/edit/' . $slips_item[0]->slip_id, $attributes, $hidden);
 		
 <?php 
 $i = 0;
-foreach ($slips_item as $item) {
+foreach ($slips_item as $item) :
 
 ?>
 <div class='row device' id='device_<?= ($i+1) ?>'>
@@ -181,7 +179,7 @@ foreach ($slips_item as $item) {
 	<?php 
 
 	$i++;
-	}
+	endforeach;
 	
 	?>
 </div> <!-- end col-md-12 -->

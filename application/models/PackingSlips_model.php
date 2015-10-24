@@ -95,7 +95,6 @@ class PackingSlips_model extends CI_Model {
 			$this->db->update('slips', $slip_data);
 
 			$item_data['item_id'] = $this->input->post('item_id');
-			// var_dump($item_data);
 
 			for( $i = 0; $i < count($item_data['item_assetTag']); $i++ ) {
 				$insert = array(

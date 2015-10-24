@@ -4,6 +4,9 @@ if($this->session->flashdata('msg') != '' ):
 	echo $this->session->flashdata('msg');
 endif; 
 ?>
+<pre>
+<?php var_dump($slips_item); ?>
+</pre>
 
 <div id="kcra-address" class="print-only">
 	<div class="printRow">
@@ -145,22 +148,16 @@ endif;
 			<th>Serial Number</th>
 			<th>Ship Quantity</th>
 		</tr>
-		<?php
-			foreach ($slips_item as $item) {
-		?>
-
-
-		<tr>
-			<td><?php echo $item->item_manufacturer; ?></td>
-			<td><?php echo $item->item_deviceName; ?></td>
-			<td><?php echo $item->item_modelNumber; ?></td>
-			<td><?php echo $item->item_serialNumber; ?></td>
-			<td><?php echo $item->item_quantity; ?></td>
-		</tr>
-
-		<?php
-			}
-		?>
+		
+		<?php foreach ($slips_item as $item) : ?>
+			<tr>
+				<td><?php echo $item->item_manufacturer; ?></td>
+				<td><?php echo $item->item_deviceName; ?></td>
+				<td><?php echo $item->item_modelNumber; ?></td>
+				<td><?php echo $item->item_serialNumber; ?></td>
+				<td><?php echo $item->item_quantity; ?></td>
+			</tr>
+		<?php endforeach;?>
 
 	</table>
 	<h3>Shipping Information</h3>

@@ -41,7 +41,6 @@ $(document).ready(function($) {
 		loadData();
 		var asset = $('#wiki-asset').val();
 		deviceNumber = $('#deviceNumber').find(":selected").val();
-		console.log(deviceNumber);
 		$('#item_assetTag_'+deviceNumber).val(asset);
 		$('#wiki-asset').val('927-######');
 	});
@@ -53,29 +52,6 @@ $(document).ready(function($) {
 		$('#item_serialNumber_'+deviceNumber).val(assetData['Serial Number']);
 	}
 
-	function resetTextFields() {
-		$("#manufacturer").val(' ');
-		$("#device-name").val(' ');
-		$("#model-number").val(' ');
-		$("#serial-number").val(' ');
-		$("#quantity").val(' ');
-		$("#address").val(' ');
-		$("#city").val(' ');
-		$("#state").val(' ');
-		$("#zip").val(' ');
-		$("#FedEx-Tracking-Number").val(' ');
-		$("#RMA-Number").val(' ');
-		$("#Additinal-Comments").val(' ');
-	}
-
-	$("#cancel").click(function() {
-		resetTextFields();
-	});
-	$("#refresh").click(function() {
-		location.reload();
-	});
-
-	counter = 1;
   $('#add-device').click(function(e){
   	e.preventDefault;
   	console.log('clicked');
