@@ -183,7 +183,7 @@ endif;
 			<th>Station Contact Phone</th>
 		</tr>
 		<tr>
-			<td><?php echo $slips_item[0]->slip_fedexTracking; ?></td>
+			<td><a target='_blank' href='https://www.fedex.com/apps/fedextrack/?action=track&language=english&cntry_code=us&tracknumbers=<?php echo $slips_item[0]->slip_fedexTracking; ?>'><?php echo $slips_item[0]->slip_fedexTracking; ?></a></td>
 			<td><?php echo $slips_item[0]->slip_rmaNumber; ?></td>
 			<td><?php echo $slips_item[0]->slip_customerContact; ?></td>
 			<td><?php echo $slips_item[0]->slip_customerPhone; ?></td>
