@@ -85,13 +85,13 @@ echo form_open('slips/edit/' . $slips_item[0]->slip_id, $attributes, $hidden);
 		</div>
 		<div class="col-md-6">
 			<div class='form-group'>
-				<label for='slip_customerContact' class='col-sm-3 control-label'>Customer Contact</label>
+				<label for='slip_customerContact' class='col-sm-3 control-label'>Station Contact</label>
 				<div class='col-sm-9'>
 					<input name='slip_customerContact' type='input' class='form-control' id='slip_customerContact' placeholder='' value="<?php echo $slips_item[0]->slip_customerContact; ?>">
 				</div>
 			</div>
 			<div class='form-group'>
-				<label for='slip_customerPhone' class='col-sm-3 control-label'>Customer Phone #</label>
+				<label for='slip_customerPhone' class='col-sm-3 control-label'>Phone #</label>
 				<div class='col-sm-9'>
 					<input name='slip_customerPhone' type='input' class='form-control' id='slip_customerPhone' placeholder='' value="<?php echo $slips_item[0]->slip_customerPhone; ?>">
 				</div>

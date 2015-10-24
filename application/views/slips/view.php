@@ -4,9 +4,6 @@ if($this->session->flashdata('msg') != '' ):
 	echo $this->session->flashdata('msg');
 endif; 
 ?>
-<pre>
-<?php var_dump($slips_item); ?>
-</pre>
 
 <div id="kcra-address" class="print-only">
 	<div class="printRow">
@@ -74,11 +71,11 @@ endif;
 						<td><?php echo $slips_item[0]->slip_rmaNumber;?></td>
 					</tr>
 					<tr>
-						<td style="font-weight: bold">Customer Contact</td>
+						<td style="font-weight: bold">Station Contact</td>
 						<td><?php echo $slips_item[0]->slip_customerContact; ?></td>
 					</tr>
 					<tr>
-						<td style="font-weight: bold">Customer Phone: </td>
+						<td style="font-weight: bold">Station Contact Phone: </td>
 						<td><?php echo $slips_item[0]->slip_customerPhone; ?></td>
 					</tr>
 				</tbody>
@@ -182,8 +179,8 @@ endif;
 		<tr>
 			<th>FedEx Tracking Number</th>
 			<th>RMA Number</th>
-			<th>Customer Contact</th>
-			<th>Customer Phone</th>
+			<th>Station Contact</th>
+			<th>Station Contact Phone</th>
 		</tr>
 		<tr>
 			<td><?php echo $slips_item[0]->slip_fedexTracking; ?></td>
