@@ -37,6 +37,17 @@ class Slips extends CI_Controller {
 		$this->load->view('templates/footer');
 	}
 
+	public function archive()
+	{
+		$data = array();
+		$data['slips'] = $this->PackingSlips_model->get_slips();
+		$data['title'] = 'Packing Slip Archive';
+
+		$this->load->view('templates/header', $data);
+		$this->load->view('slips/archive.php', $data);
+		$this->load->view('templates/footer');
+	}
+
 	public function create()
 	{
 		$this->load->helper('form');
