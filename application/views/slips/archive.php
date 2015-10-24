@@ -14,8 +14,8 @@
 	$reverseSlips = array_reverse($slips);
 	foreach ($reverseSlips as $slips_item) :
 		if ($slips_item['slip_status'] == 'Complete')
-		echo "<tr><td><a href='slips/" . $slips_item['slip_id'] . "'>" . $slips_item['slip_id'] .
-                            "</a></td><td><a href='slips/" . $slips_item['slip_id'] . "'>" . $slips_item['slip_description'] . 
+		echo "<tr><td><a href='" . site_url('slips') . "/" . $slips_item['slip_id'] . "'>" . $slips_item['slip_id'] .
+                            "</a></td><td><a href='" . site_url('slips') . "/" . $slips_item['slip_id'] . "'>" . $slips_item['slip_description'] . 
                             "</a></td><td>" . $slips_item['slip_shipName'] . 
                             "</td><td><a target='_blank' href='https://www.fedex.com/apps/fedextrack/?action=track&language=english&cntry_code=us&tracknumbers=" . $slips_item['slip_fedexTracking'] . "'>" . $slips_item['slip_fedexTracking'] .
                             "</td><td>" . $slips_item['slip_customerContact'] .                             
