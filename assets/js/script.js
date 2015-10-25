@@ -52,13 +52,22 @@ $(document).ready(function($) {
 		$('#item_serialNumber_'+deviceNumber).val(assetData['Serial Number']);
 	}
 
+	$('#devices').on('click', '.delete', function(e){
+		e.preventDefault;
+		console.log('delete activated');
+		var parentID = $(this).parent().attr('id').slice(-1);
+		console.log(parentID);
+		$("#deviceNumber option[value="+parentID+"]").remove();
+		$(this).closest('div').remove();
+	});
+
   $('#add-device').click(function(e){
   	e.preventDefault;
   	console.log('clicked');
   	counter = $('.device').length;
-		$('#form').append(
+		$('#devices').append(
 			"<div class='row device' id='device_"+(counter+1)+"'>\
-			<h2 id='device_1'>Device "+(counter+1)+"</h2>\
+			<h2 id='device_1'>Device "+(counter+1)+"<button type='button' class='btn btn-default btn-md delete pull-right'><span class='glyphicon glyphicon-remove-circle' aria-hidden='true'></span></button></h2>\
 				<div class='col-md-6'>\
 					<div class='form-group'>\
 						<label for='item_assetTag' class='col-sm-3 control-label'>Asset Tag Number</label>\
