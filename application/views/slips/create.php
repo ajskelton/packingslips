@@ -122,50 +122,51 @@ echo form_open('slips/create', $attributes);
 						</div>
 					</div>
 				</div> <!-- end row -->
-					
-				<div class='row device' id='device_1'>
-					<h2>Device</h2>
-						<div class='col-md-6'>
-							<div class='form-group'>
-								<label for='item_assetTag' class='col-sm-3 control-label'>Asset Tag Number</label>
-								<div class='col-sm-9'>
-									<input name="item_assetTag[0]" type='input' class='form-control' id='item_assetTag_0' placeholder='' value="<?php echo set_value('item_assetTag[]', ''); ?>">
+				<div id='devices'>
+					<div class='row device' id='device_1'>
+						<h2>Device</h2>
+							<div class='col-md-6'>
+								<div class='form-group'>
+									<label for='item_assetTag' class='col-sm-3 control-label'>Asset Tag Number</label>
+									<div class='col-sm-9'>
+										<input name="item_assetTag[0]" type='input' class='form-control' id='item_assetTag_0' placeholder='' value="<?php echo set_value('item_assetTag[]', ''); ?>">
+									</div>
+								</div>
+								<div class='form-group'>
+									<label for='item_manufacturer' class='col-sm-3 control-label'>Manufacturer</label>
+									<div class='col-sm-9'>
+										<input name='item_manufacturer[0]' type='input' class='form-control' id='item_manufacturer_0' placeholder='' value="<?php echo set_value('item_manufacturer[]', ''); ?>">
+									</div>
+								</div>
+								<div class='form-group'>
+									<label for='item_deviceName' class='col-sm-3 control-label'>Device Name</label>
+									<div class='col-sm-9'>
+										<input name='item_deviceName[0]' type='input' class='form-control' id='item_deviceName_0' placeholder='' value="<?php echo set_value('item_deviceName[]', ''); ?>">
+									</div>
 								</div>
 							</div>
-							<div class='form-group'>
-								<label for='item_manufacturer' class='col-sm-3 control-label'>Manufacturer</label>
-								<div class='col-sm-9'>
-									<input name='item_manufacturer[0]' type='input' class='form-control' id='item_manufacturer_0' placeholder='' value="<?php echo set_value('item_manufacturer[]', ''); ?>">
+							<div class="col-md-6">
+								<div class='form-group'>
+									<label for='item_modelNumber' class='col-sm-3 control-label'>Model Number</label>
+									<div class='col-sm-9'>
+										<input name='item_modelNumber[0]' type='input' class='form-control' id='item_modelNumber_0' placeholder='' value="<?php echo set_value('item_modelNumber[]', ''); ?>">
+									</div>
+								</div>
+								<div class='form-group'>
+									<label for='item_serialNumber' class='col-sm-3 control-label'>Serial Number</label>
+									<div class='col-sm-9'>
+										<input name='item_serialNumber[0]' type='input' class='form-control' id='item_serialNumber_0' placeholder='' value="<?php echo set_value('item_serialNumber[]', ''); ?>">
+									</div>
+								</div>
+								<div class='form-group'>
+									<label for='item_quantity' class='col-sm-3 control-label'>Quantity</label>
+									<div class='col-sm-9'>
+										<input name='item_quantity[0]' type='input' class='form-control' id='item_quantity' placeholder='' value="<?php echo set_value('item_quantity[]', ''); ?>">
+									</div>
 								</div>
 							</div>
-							<div class='form-group'>
-								<label for='item_deviceName' class='col-sm-3 control-label'>Device Name</label>
-								<div class='col-sm-9'>
-									<input name='item_deviceName[0]' type='input' class='form-control' id='item_deviceName_0' placeholder='' value="<?php echo set_value('item_deviceName[]', ''); ?>">
-								</div>
-							</div>
-						</div>
-						<div class="col-md-6">
-							<div class='form-group'>
-								<label for='item_modelNumber' class='col-sm-3 control-label'>Model Number</label>
-								<div class='col-sm-9'>
-									<input name='item_modelNumber[0]' type='input' class='form-control' id='item_modelNumber_0' placeholder='' value="<?php echo set_value('item_modelNumber[]', ''); ?>">
-								</div>
-							</div>
-							<div class='form-group'>
-								<label for='item_serialNumber' class='col-sm-3 control-label'>Serial Number</label>
-								<div class='col-sm-9'>
-									<input name='item_serialNumber[0]' type='input' class='form-control' id='item_serialNumber_0' placeholder='' value="<?php echo set_value('item_serialNumber[]', ''); ?>">
-								</div>
-							</div>
-							<div class='form-group'>
-								<label for='item_quantity' class='col-sm-3 control-label'>Quantity</label>
-								<div class='col-sm-9'>
-									<input name='item_quantity[0]' type='input' class='form-control' id='item_quantity' placeholder='' value="<?php echo set_value('item_quantity[]', ''); ?>">
-								</div>
-							</div>
-						</div>
-					</div>
+						</div> <!-- end device 1 -->
+					</div> <!-- end devices -->
 				</div> <!-- end col-md-9 -->
 				<div class="col-md-3">
 					<div id="sticky-anchor"></div>
