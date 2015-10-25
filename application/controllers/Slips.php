@@ -121,6 +121,16 @@ class Slips extends CI_Controller {
 		return TRUE;
 	}
 
+	public function delete_device()
+	{
+		$this->PackingSlips_model->delete_device();
+
+		$this->session->set_flashdata('msg', '<div class="alert alert-warning" roles="alert">Device Deleted</div>');
+		$referred_from = $this->session->userdata('referred_from');
+		redirect($referred_from, 'refresh');
+		return TRUE;
+	}
+
 	public function search()
 	{
 		$this->load->helper('form');

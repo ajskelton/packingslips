@@ -132,7 +132,7 @@ foreach ($slips_item as $item) :
 
 ?>
 <div class='row device' id='device_<?= ($i+1) ?>'>
-	<h2>Device <?php echo ($i+1) ?></h2>
+	<h2>Device <?php echo ($i+1) ?><?php echo anchor('slips/delete_device/' . $item->item_id, 'Delete Device', array('onclick' => "return confirm('Are you sure you want to delete this Device?')", 'class' => 'btn btn-md btn-danger pull-right')) ?></h2>
 	<input type="hidden" name="item_id[]" value="<?php echo $item->item_id; ?>" style="display:none;">
 		<div class='col-md-6'>
 			<div class='form-group'>

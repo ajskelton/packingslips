@@ -127,6 +127,12 @@ class PackingSlips_model extends CI_Model {
 		$this->db->delete('slips');
 	}
 
+	public function delete_device()
+	{
+		$this->db->where('item_id', $this->uri->segment(3));
+		$this->db->delete('items');
+	}
+
 	// public function search($keyword)
 	// {
 	// 	$this->db->select('*');
