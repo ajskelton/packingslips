@@ -68,22 +68,29 @@ class PackingSlips_model extends CI_Model {
 			'item_serialNumber' => $this->input->post('item_serialNumber'),
 			'item_quantity' => $this->input->post('item_quantity')
 		);
-	
+
+		$sorted_item_data = array();
+
+		foreach ($item_data as $key => $value) {  // Fixes index issue when removing an added device from the middle of the device list
+			foreach ($value as $key2 => $value2) {
+				$sorted_item_data[$key][] = $value2;
+			}
+		}
 
 		if ($id === 0 )
 		{
 			$this->db->insert('slips', $slip_data);
-			$item_data['slip_id_fk'] = $this->db->insert_id();
+			$sorted_item_data['slip_id_fk'] = $this->db->insert_id();
 
-			for( $i = 0 ; $i < count($item_data['item_assetTag']) ; $i++){
+			for( $i = 0 ; $i < count($sorted_item_data['item_assetTag']) ; $i++){
 				$insert = array(
-					'item_assetTag' => $item_data['item_assetTag'][$i],
-					'item_manufacturer' => $item_data['item_manufacturer'][$i],
-					'item_deviceName' => $item_data['item_deviceName'][$i],
-					'item_modelNumber' => $item_data['item_modelNumber'][$i],
-					'item_serialNumber' => $item_data['item_serialNumber'][$i],
-					'item_quantity' => $item_data['item_quantity'][$i],
-					'slip_id_fk' => $item_data['slip_id_fk']
+					'item_assetTag' => $sorted_item_data['item_assetTag'][$i],
+					'item_manufacturer' => $sorted_item_data['item_manufacturer'][$i],
+					'item_deviceName' => $sorted_item_data['item_deviceName'][$i],
+					'item_modelNumber' => $sorted_item_data['item_modelNumber'][$i],
+					'item_serialNumber' => $sorted_item_data['item_serialNumber'][$i],
+					'item_quantity' => $sorted_item_data['item_quantity'][$i],
+					'slip_id_fk' => $sorted_item_data['slip_id_fk']
 				);
 				$this->db->insert('items', $insert);
 			}
@@ -94,17 +101,17 @@ class PackingSlips_model extends CI_Model {
 			$this->db->where('slip_id', $slip_data['slip_id']);
 			$this->db->update('slips', $slip_data);
 
-			$item_data['item_id'] = $this->input->post('item_id');
+			$sorted_item_data['item_id'] = $this->input->post('item_id');
 
-			for( $i = 0; $i < count($item_data['item_assetTag']); $i++ ) {
+			for( $i = 0; $i < count($sorted_item_data['item_assetTag']); $i++ ) {
 				$insert = array(
-					'item_id' => $item_data['item_id'][$i],
-					'item_assetTag' => $item_data['item_assetTag'][$i],
-					'item_manufacturer' => $item_data['item_manufacturer'][$i],
-					'item_deviceName' => $item_data['item_deviceName'][$i],
-					'item_modelNumber' => $item_data['item_modelNumber'][$i],
-					'item_serialNumber' => $item_data['item_serialNumber'][$i],
-					'item_quantity' => $item_data['item_quantity'][$i],
+					'item_id' => $sorted_item_data['item_id'][$i],
+					'item_assetTag' => $sorted_item_data['item_assetTag'][$i],
+					'item_manufacturer' => $sorted_item_data['item_manufacturer'][$i],
+					'item_deviceName' => $sorted_item_data['item_deviceName'][$i],
+					'item_modelNumber' => $sorted_item_data['item_modelNumber'][$i],
+					'item_serialNumber' => $sorted_item_data['item_serialNumber'][$i],
+					'item_quantity' => $sorted_item_data['item_quantity'][$i],
 					'slip_id_fk' => $slip_data['slip_id']
 				);
 				$this->db->where('item_id', $insert['item_id']);
