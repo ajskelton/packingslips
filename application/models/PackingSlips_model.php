@@ -44,29 +44,29 @@ class PackingSlips_model extends CI_Model {
 
 
 		$slip_data = array(
-			'slip_shipName' => $this->input->post('slip_shipName'),
-			'slip_shipAddress' => $this->input->post('slip_shipAddress'),
-			'slip_shipCity' => $this->input->post('slip_shipCity'),
-			'slip_shipState' => $this->input->post('slip_shipState'),
-			'slip_shipZip' => $this->input->post('slip_shipZip'),
-			'slip_fedexTracking' => $this->input->post('slip_fedexTracking'),
-			'slip_rmaNumber' => $this->input->post('slip_rmaNumber'),
-			'slip_comments' => $this->input->post('slip_comments'),
-			'slip_status' => $this->input->post('slip_status'),
-			'slip_id' => $this->input->post('slip_id'),
-			'slip_customerContact' => $this->input->post('slip_customerContact'),
-			'slip_customerPhone' => $this->input->post('slip_customerPhone'),
-			'slip_description' => $this->input->post('slip_description'),
-			'slip_lastModified' => date('F j, Y g:i a')
+			'slip_shipName' 				=> $this->input->post('slip_shipName'),
+			'slip_shipAddress' 			=> $this->input->post('slip_shipAddress'),
+			'slip_shipCity' 				=> $this->input->post('slip_shipCity'),
+			'slip_shipState' 				=> $this->input->post('slip_shipState'),
+			'slip_shipZip' 					=> $this->input->post('slip_shipZip'),
+			'slip_fedexTracking' 		=> $this->input->post('slip_fedexTracking'),
+			'slip_rmaNumber' 				=> $this->input->post('slip_rmaNumber'),
+			'slip_comments' 				=> $this->input->post('slip_comments'),
+			'slip_status' 					=> $this->input->post('slip_status'),
+			'slip_id' 							=> $this->input->post('slip_id'),
+			'slip_customerContact' 	=> $this->input->post('slip_customerContact'),
+			'slip_customerPhone' 		=> $this->input->post('slip_customerPhone'),
+			'slip_description' 			=> $this->input->post('slip_description'),
+			'slip_lastModified' 		=> date('F j, Y g:i a')
 		);
 
 		$item_data = array(
-			'item_assetTag' => $this->input->post('item_assetTag'),
-			'item_manufacturer' => $this->input->post('item_manufacturer'),
-			'item_deviceName' => $this->input->post('item_deviceName'),
-			'item_modelNumber' => $this->input->post('item_modelNumber'),
-			'item_serialNumber' => $this->input->post('item_serialNumber'),
-			'item_quantity' => $this->input->post('item_quantity')
+			'item_assetTag' 				=> $this->input->post('item_assetTag'),
+			'item_manufacturer' 		=> $this->input->post('item_manufacturer'),
+			'item_deviceName' 			=> $this->input->post('item_deviceName'),
+			'item_modelNumber' 			=> $this->input->post('item_modelNumber'),
+			'item_serialNumber' 		=> $this->input->post('item_serialNumber'),
+			'item_quantity' 				=> $this->input->post('item_quantity')
 		);
 
 		$sorted_item_data = array();
@@ -84,13 +84,13 @@ class PackingSlips_model extends CI_Model {
 
 			for( $i = 0 ; $i < count($sorted_item_data['item_assetTag']) ; $i++){
 				$insert = array(
-					'item_assetTag' => $sorted_item_data['item_assetTag'][$i],
-					'item_manufacturer' => $sorted_item_data['item_manufacturer'][$i],
-					'item_deviceName' => $sorted_item_data['item_deviceName'][$i],
-					'item_modelNumber' => $sorted_item_data['item_modelNumber'][$i],
-					'item_serialNumber' => $sorted_item_data['item_serialNumber'][$i],
-					'item_quantity' => $sorted_item_data['item_quantity'][$i],
-					'slip_id_fk' => $sorted_item_data['slip_id_fk']
+					'item_assetTag' 			=> $sorted_item_data['item_assetTag'][$i],
+					'item_manufacturer' 	=> $sorted_item_data['item_manufacturer'][$i],
+					'item_deviceName' 		=> $sorted_item_data['item_deviceName'][$i],
+					'item_modelNumber' 		=> $sorted_item_data['item_modelNumber'][$i],
+					'item_serialNumber' 	=> $sorted_item_data['item_serialNumber'][$i],
+					'item_quantity' 			=> $sorted_item_data['item_quantity'][$i],
+					'slip_id_fk' 					=> $sorted_item_data['slip_id_fk']
 				);
 				$this->db->insert('items', $insert);
 			}
@@ -105,14 +105,14 @@ class PackingSlips_model extends CI_Model {
 
 			for( $i = 0; $i < count($sorted_item_data['item_assetTag']); $i++ ) {
 				$insert = array(
-					'item_id' => $sorted_item_data['item_id'][$i],
-					'item_assetTag' => $sorted_item_data['item_assetTag'][$i],
-					'item_manufacturer' => $sorted_item_data['item_manufacturer'][$i],
-					'item_deviceName' => $sorted_item_data['item_deviceName'][$i],
-					'item_modelNumber' => $sorted_item_data['item_modelNumber'][$i],
-					'item_serialNumber' => $sorted_item_data['item_serialNumber'][$i],
-					'item_quantity' => $sorted_item_data['item_quantity'][$i],
-					'slip_id_fk' => $slip_data['slip_id']
+					'item_id' 						=> $sorted_item_data['item_id'][$i],
+					'item_assetTag' 			=> $sorted_item_data['item_assetTag'][$i],
+					'item_manufacturer' 	=> $sorted_item_data['item_manufacturer'][$i],
+					'item_deviceName' 		=> $sorted_item_data['item_deviceName'][$i],
+					'item_modelNumber' 		=> $sorted_item_data['item_modelNumber'][$i],
+					'item_serialNumber' 	=> $sorted_item_data['item_serialNumber'][$i],
+					'item_quantity' 			=> $sorted_item_data['item_quantity'][$i],
+					'slip_id_fk' 					=> $slip_data['slip_id']
 				);
 				$this->db->where('item_id', $insert['item_id']);
 				$this->db->replace('items', $insert);
@@ -132,14 +132,4 @@ class PackingSlips_model extends CI_Model {
 		$this->db->where('item_id', $this->uri->segment(3));
 		$this->db->delete('items');
 	}
-
-	// public function search($keyword)
-	// {
-	// 	$this->db->select('*');
-	// 	$this->db->from('slips');
-	// 	$this->db->like('slip_deviceName', $keyword);
-
-	// 	$query = $this->db->get();
-	// 	return $query->result();
-	// }
 }
