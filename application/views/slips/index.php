@@ -12,7 +12,7 @@ endif;
 		<th>ID</th>
 		<th>Description</th>
 		<th>Shipped To</th>
-		<th>FedEx Tracking #</th>
+		<th>FedEx Tracking</th>
 		<th>Station Contact</th>
 		<th>Date Created</th>
 		<th>Last Modified</th>

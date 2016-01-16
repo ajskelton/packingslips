@@ -117,7 +117,7 @@ endif;
 	</div><!-- end device-table -->
 	<div class="printRow">
 		<h3>Comments</h3>
-		<p><?php echo $slips_item["slip_comments"] ?></p>
+		<p><?php echo $slips_item[0]->slip_comments; ?></p>
 	</div><!-- end printRow -->
 </div><!-- end kcra-address -->
 
