@@ -82,5 +82,32 @@ $config = array(
 			'label' => 'Description',
 			'rules' => 'required',
 		),
+	),
+	'vendors' => array(
+		array(
+			'field' => 'vendor_name',
+			'label' => 'Vendor Name',
+			'rules' => 'required',
+		),
+		array(
+			'field' => 'vendor_address',
+			'label' => 'Vendor Address',
+			'rules' => 'required',
+		),
+		array(
+			'field' => 'vendor_city',
+			'label' => 'Vendor City',
+			'rules' => 'required',
+		),
+		array(
+			'field' => 'vendor_state',
+			'label' => 'Vendor State',
+			'rules' => 'required',
+		),
+		array(
+			'field' => 'vendor_zip',
+			'label' => 'Vendor Zip',
+			'rules' => 'required',
+		),
 	)
 );
