@@ -9,11 +9,7 @@ class Slips extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->library('session');
-		$this->load->helper('form');
-		$data = array();
-		$data['slips'] = $this->PackingSlips_model->get_slips();
-		$data['title'] = 'Active Packing Slips';
+		$data['title'] = 'All Packing Slips';
 
 		$this->load->view('templates/header', $data);
 		$this->load->view('slips/index.php', $data);
@@ -69,7 +65,7 @@ class Slips extends CI_Controller {
 			$this->load->library('session');
 
 			$this->session->set_flashdata('msg', '<div class="alert alert-success" role="alert">Packing Slip Created</div>');
-			redirect('slips');
+			redirect('active');
 			return TRUE;
 
 		}
@@ -117,7 +113,7 @@ class Slips extends CI_Controller {
 		$this->PackingSlips_model->delete_slip();
 
 		$this->session->set_flashdata('msg', '<div class="alert alert-warning" role="alert">Packing Slip Deleted</div>');
-		redirect('slips');
+		redirect('active');
 		return TRUE;
 	}
 
