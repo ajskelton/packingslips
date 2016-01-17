@@ -183,14 +183,6 @@ foreach ($slips_item as $item) :
 	
 	?>
 </div> <!-- end col-md-12 -->
-
-<div class="row">
-	<div class="col-sm-12">
-		<p>
-			<div class="btn btn-warning btn-lg btn-block" id="add-device">Add Device</div>		
-		</p>
-	</div>
-</div>
 <div class="row">
 	<div class="col-sm-12">
 		<input id="form-btn" type='submit' name="submit" class='btn btn-primary btn-lg btn-block' value="Update Packing Slip">
