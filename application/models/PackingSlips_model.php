@@ -8,15 +8,34 @@ class PackingSlips_model extends CI_Model {
 
 	public function record_count()
 	{
-		return $this->db->count_all("slip_id");
+		$this->db->select('*');
+		$this->db->from('slips');
+		$this->db->where_not_in('slip_status', 'Complete');
+		return $this->db->get()->num_rows();
 	}
 
-	public function get_slips($id = 0)
+	public function archive_count()
+	{
+		$this->db->select('*');
+		$this->db->from('slips');
+		$this->db->where('slip_status', 'Complete');
+		return $this->db->get()->num_rows();
+	}
+
+	public function get_slips($id = 0, $limit, $start, $filter)
 	{
 		if ($id === 0)
 		{
 			$this->db->select('*');
 			$this->db->from('slips');
+			// $this->db->where_not_in('slip_status', 'Complete');
+			$this->db->limit($limit, $start);
+			$this->db->order_by('slip_date', 'DESC');
+			if ($filter) {
+				$this->db->where_not_in('slip_status', 'Complete');
+			} else {
+				$this->db->where('slip_status', 'Complete');
+			}
 			$query = $this->db->get();
 
 			return $query->result_array();
