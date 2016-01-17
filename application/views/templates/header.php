@@ -19,7 +19,7 @@
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="<?php echo site_url('slips'); ?>">KCRA | <?php echo $title ?></a>
+			<span class="navbar-brand">KCRA | <?php echo $title ?></span>
 		</div>
 		<div class="col-sm-3 col-sm-offset-4">
 	            <div id="imaginary_container"> 
@@ -32,8 +32,8 @@
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-right">
 			<li><a href="<?php echo site_url('slips/create'); ?>">New Slip</a></li>
-			<li><a href="<?php echo site_url('slips'); ?>">Active Slips</a></li>
-			<li><a href="<?php echo site_url('slips/archive'); ?>">Archive</a></li>
+			<li><a href="<?php echo site_url('active'); ?>">Active Slips</a></li>
+			<li><a href="<?php echo site_url('archive'); ?>">Archive</a></li>
 			<li><a href="<?php echo site_url('vendors'); ?>">Vendors</a></li>
 			</ul>
 		</div><!-- /.navbar-collapse -->
