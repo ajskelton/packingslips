@@ -41,7 +41,7 @@ class Archive extends CI_Controller {
 		$data['slips'] = $this->PackingSlips_model->get_slips(0, $config['per_page'], $this->uri->segment(3), false);
 
 		$data['pagination'] = $this->pagination->create_links();
-		$data['title'] = 'Active Packing Slips';
+		$data['title'] = 'Archive Packing Slips';
 
 		$this->load->view('templates/header', $data);
 		$this->load->view('slips/archive.php', $data);
