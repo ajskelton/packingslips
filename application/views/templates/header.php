@@ -35,6 +35,7 @@
 			<li><a href="<?php echo site_url('active'); ?>">Active Slips</a></li>
 			<li><a href="<?php echo site_url('archive'); ?>">Archive</a></li>
 			<li><a href="<?php echo site_url('vendors'); ?>">Vendors</a></li>
+			<li><a href="<?php echo site_url('pagination'); ?>">Search</a></li>
 			</ul>
 		</div><!-- /.navbar-collapse -->
 	</div><!-- /.container-fluid -->
