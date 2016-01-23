@@ -126,12 +126,4 @@ class Slips extends CI_Controller {
 		redirect($referred_from, 'refresh');
 		return TRUE;
 	}
-
-	public function search()
-	{
-		$this->load->helper('form');
-		$keyword = $this->input->post('keyword');
-		$data['results'] = $this->PackingSlips_model->search($keyword);
-		$this->load->view('results_view', $data);
-	}
 }
