@@ -28,7 +28,6 @@ class PackingSlips_model extends CI_Model {
 		{
 			$this->db->select('*');
 			$this->db->from('slips');
-			// $this->db->where_not_in('slip_status', 'Complete');
 			$this->db->limit($limit, $start);
 			$this->db->order_by('slip_date', 'DESC');
 			if ($filter) {
