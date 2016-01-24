@@ -7,7 +7,7 @@
         echo form_open("pagination/search", $attr);?>
                 <div class="col-md-12">
                     <div class="form-group">
-                        <input class="form-control" id="slip_name" name="slip_name" placeholder="Search for Slip Name..." type="text" value="<?php echo set_value('slip_name'); ?>" />
+                        <input class="form-control" id="slip_name" name="slip_name" placeholder="Search Packing Slips..." type="text" value="<?php echo set_value('slip_name'); ?>" />
                     </div>
                 </div>
                 <div class="col-md-12">
