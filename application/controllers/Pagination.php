@@ -44,7 +44,7 @@ class pagination extends CI_Controller {
 
     $data['page'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
     
-    // get books list
+    // get slips list
     $data['slips'] = $this->pagination_model->get_slips($config["per_page"], $data['page'], NULL);
     
     $data['pagination'] = $this->pagination->create_links();
@@ -93,11 +93,11 @@ class pagination extends CI_Controller {
     $this->pagination->initialize($config);
 
     $data['page'] = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
-    // get books list
+    // get slips list
     $data['slips'] = $this->pagination_model->get_slips($config['per_page'], $data['page'], $search);
+    $data['title'] = 'Search for "' . $search . '"';
 
     $data['pagination'] = $this->pagination->create_links();
-
     //load view
     $this->load->view('templates/header', $data);
     $this->load->view('pagination_view',$data);
