@@ -300,6 +300,13 @@ error_reporting(E_ALL & ~E_DEPRECATED);
 	define('VIEWPATH', $view_folder);
 
 /*
+* LOAD THE COMPOSER AUTOLOAD FILE
+*
+* @since 2.1
+ */
+include_once '.vendor/autoload.php';
+
+/*
  * --------------------------------------------------------------------
  * LOAD THE BOOTSTRAP FILE
  * --------------------------------------------------------------------
