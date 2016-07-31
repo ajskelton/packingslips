@@ -59,7 +59,17 @@ $(document).ready(function($) {
 		console.log(parentID);
 		$("#deviceNumber option[value="+parentID+"]").remove();
 		$(this).closest('div').remove();
+		updateDeviceNumbers();
 	});
+
+	function updateDeviceNumbers(){
+		var devices = document.querySelectorAll('.device');
+		for( i = 0, max = devices.length; i < max; i++ ) {
+			devices[i].setAttribute('id', 'device_' + (i + 1) );
+			var newTitle = document.createTextNode('Device ' + (i + 1) );
+			devices[i].firstElementChild.replaceChild( newTitle, devices[i].firstElementChild.firstChild );
+		}
+	}
 
   $('#add-device').click(function(e){
   	e.preventDefault;
