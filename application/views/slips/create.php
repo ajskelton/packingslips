@@ -124,7 +124,7 @@ echo form_open('slips/create', $attributes);
 				</div> <!-- end row -->
 				<div id='devices'>
 					<div class='row device' id='device_1'>
-						<h2>Device</h2>
+						<h2>Device 1</h2>
 							<div class='col-md-6'>
 								<div class='form-group'>
 									<label for='item_assetTag' class='col-sm-3 control-label'>Asset Tag Number</label>
