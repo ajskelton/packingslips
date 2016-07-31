@@ -304,7 +304,7 @@ error_reporting(E_ALL & ~E_DEPRECATED);
 *
 * @since 2.1
  */
-include_once '.vendor/autoload.php';
+include_once './vendor/autoload.php';
 
 /*
  * --------------------------------------------------------------------
